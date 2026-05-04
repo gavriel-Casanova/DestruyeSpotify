@@ -7,4 +7,24 @@ public class Musico extends Artista {
 		// TODO Auto-generated constructor stub
 	}
 
+	private String caracteristicas = null;
+
+	public String getCaracteristicas() {
+		return caracteristicas;
+	}
+
+	public void setCaracteristicas(String caracteristicas) {
+		this.caracteristicas = caracteristicas;
+	}
+
+	@Override
+	public String toString() {
+		return "Musico [caracteristicas=" + caracteristicas + "]";
+	}
+
+	public Musico(int idArtiste, String nombreArtistico, String descripcion, String genero, String caracteristicas) {
+		super(idArtiste, nombreArtistico, descripcion, genero);
+		this.caracteristicas = caracteristicas;
+	}
+
 }
