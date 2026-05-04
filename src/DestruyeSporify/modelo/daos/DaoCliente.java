@@ -38,10 +38,13 @@ public class DaoCliente {
 
 				Cliente cliente = new Cliente();
 
-				int id_pelicula = resultSet.getInt("id_pelicula");
-				String nombre = resultSet.getString("nombre");
-				int duracion = resultSet.getInt("duracion");
-				String genero = resultSet.getString("genero");
+				cliente.setIdCliente(resultSet.getInt("IdCliente"));
+				cliente.setNombre(resultSet.getString("nombre"));
+				cliente.setApellido(resultSet.getString("Apellido"));
+				cliente.setIdIdioma(resultSet.getString("idIdioma"));
+				cliente.setFechaNacimiento(resultSet.getDate("FechaNacimiento"));
+				cliente.setFechaRegistro(resultSet.getDate("FechaRegistro"));
+				cliente.setTipo(resultSet.getString("Tipo"));
 
 
 				ret = cliente;
