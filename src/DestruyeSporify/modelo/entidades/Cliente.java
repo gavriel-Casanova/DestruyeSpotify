@@ -12,6 +12,7 @@ public class Cliente {
 	private Date fechaNacimiento = null;
 	private Date fechaRegistro = null;
 	private String idIdioma = null;
+	private String tipo = null;
 
 	public int getIdCliente() {
 		return idCliente;
@@ -77,11 +78,19 @@ public class Cliente {
 		this.idIdioma = idIdioma;
 	}
 
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	@Override
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", apellido=" + apellido + ", usuario="
 				+ usuario + ", contraseña=" + contraseña + ", fechaNacimiento=" + fechaNacimiento + ", fechaRegistro="
-				+ fechaRegistro + ", idIdioma=" + idIdioma + "]";
+				+ fechaRegistro + ", idIdioma=" + idIdioma + ", tipo=" + tipo + "]";
 	}
 
 	public Cliente() {
@@ -94,17 +103,20 @@ public class Cliente {
 		return Objects.hash(apellido, contraseña, fechaNacimiento, fechaRegistro, idCliente, idIdioma, nombre, usuario);
 	}
 
-	public Cliente(int idCliente, String nombre, String apellido, String usuario, String contraseña,
-			Date fechaNacimiento, Date fechaRegistro, String idIdioma) {
-		super();
-		this.idCliente = idCliente;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.usuario = usuario;
-		this.contraseña = contraseña;
-		this.fechaNacimiento = fechaNacimiento;
-		this.fechaRegistro = fechaRegistro;
-		this.idIdioma = idIdioma;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(apellido, other.apellido) && Objects.equals(contraseña, other.contraseña)
+				&& Objects.equals(fechaNacimiento, other.fechaNacimiento)
+				&& Objects.equals(fechaRegistro, other.fechaRegistro) && idCliente == other.idCliente
+				&& Objects.equals(idIdioma, other.idIdioma) && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(usuario, other.usuario);
 	}
 
 }
