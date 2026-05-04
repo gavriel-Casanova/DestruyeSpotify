@@ -1,10 +1,11 @@
 package DestruyeSporify;
 
+import DestruyeSporify.controlador.Controlador;
+
 public class Launcher {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		new Controlador().iniciar();
 	}
 
 }
