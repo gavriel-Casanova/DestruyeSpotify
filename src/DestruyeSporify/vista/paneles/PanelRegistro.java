@@ -17,10 +17,10 @@ public class PanelRegistro extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Controlador controlador = null;
 	private JTextField textNombre;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textApellido;
+	private JTextField textUsuario;
+	private JTextField textContraseña;
+	private JTextField textConfirmarContraseña;
 
 	public PanelRegistro() {
 		setLayout(null);
@@ -54,37 +54,37 @@ public class PanelRegistro extends JPanel {
 		lblApellido.setBounds(256, 45, 46, 14);
 		add(lblApellido);
 		
-		textField = new JTextField();
-		textField.setBounds(325, 42, 86, 20);
-		add(textField);
-		textField.setColumns(10);
+		textApellido = new JTextField();
+		textApellido.setBounds(325, 42, 86, 20);
+		add(textApellido);
+		textApellido.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Usuario:");
 		lblNewLabel.setBounds(34, 84, 46, 14);
 		add(lblNewLabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(90, 81, 86, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
+		textUsuario = new JTextField();
+		textUsuario.setBounds(90, 81, 86, 20);
+		add(textUsuario);
+		textUsuario.setColumns(10);
 		
 		JLabel lblContraseña = new JLabel("Contraseña:");
 		lblContraseña.setBounds(34, 122, 81, 14);
 		add(lblContraseña);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(100, 119, 126, 20);
-		add(textField_2);
-		textField_2.setColumns(10);
+		textContraseña = new JTextField();
+		textContraseña.setBounds(100, 119, 126, 20);
+		add(textContraseña);
+		textContraseña.setColumns(10);
 		
 		JLabel lblConfirmarContraseña = new JLabel("Confirmar Contraseña:");
 		lblConfirmarContraseña.setBounds(34, 156, 116, 14);
 		add(lblConfirmarContraseña);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(149, 153, 133, 20);
-		add(textField_3);
-		textField_3.setColumns(10);
+		textConfirmarContraseña = new JTextField();
+		textConfirmarContraseña.setBounds(149, 153, 133, 20);
+		add(textConfirmarContraseña);
+		textConfirmarContraseña.setColumns(10);
 		
 		JLabel lblFechaNacimiento = new JLabel("Fecha Nacimiento:");
 		lblFechaNacimiento.setBounds(34, 181, 95, 14);
