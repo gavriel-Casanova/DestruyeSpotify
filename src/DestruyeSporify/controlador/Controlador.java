@@ -34,9 +34,8 @@ public class Controlador {
 		return ret;
 	}
 	
-	// nombre, usuario, pass, confirmacion pass, fecha nacimiento, idioma
 	
-	public boolean registrarCliente(String nombre, String usuario, String pass, String passConfirm, Date fecNacimiento, String idioma) {
+	public boolean registrarCliente(String nombre, String usuario, String pass, String passConfirm, Date fecNacimiento, String idioma, boolean premiun) {
 		boolean ret = false;
 		
 		

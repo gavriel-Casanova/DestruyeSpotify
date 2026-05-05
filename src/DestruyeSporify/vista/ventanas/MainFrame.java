@@ -38,4 +38,6 @@ public class MainFrame extends JFrame{
 		setTitle("Registrarse - Destruye Spotify");
 		
 	}
+	
+	
 }
