@@ -33,4 +33,9 @@ public class MainFrame extends JFrame{
 	public void CambiarPanel(int panel) {
 		setContentPane(paneles.get(panel));
 	}
+	
+	public void panelRegistro() {
+		setTitle("Registrarse - Destruye Spotify");
+		
+	}
 }
