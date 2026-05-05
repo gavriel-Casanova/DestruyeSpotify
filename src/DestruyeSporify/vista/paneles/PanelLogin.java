@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class PanelLogin extends JPanel {
 
@@ -39,6 +41,7 @@ public class PanelLogin extends JPanel {
 		add(psfPassword);
 		
 		JButton btnLogin = new JButton("Log in");
+		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean valido = controlador.validarLogin(txtUsuario.getText(), psfPassword.getText());
@@ -52,7 +55,19 @@ public class PanelLogin extends JPanel {
 		add(btnLogin);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnRegistrarse.setBounds(418, 339, 202, 45);
 		add(btnRegistrarse);
+		
+		JLabel lblUsuario = new JLabel("Usuario:");
+		lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblUsuario.setBackground(new Color(240, 240, 240));
+		lblUsuario.setBounds(224, 158, 73, 26);
+		add(lblUsuario);
+		
+		JLabel lblContraseña = new JLabel("Contraseña:");
+		lblContraseña.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblContraseña.setBounds(201, 224, 120, 26);
+		add(lblContraseña);
 	}
 }
