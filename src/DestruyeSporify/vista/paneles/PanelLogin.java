@@ -55,6 +55,11 @@ public class PanelLogin extends JPanel {
 		add(btnLogin);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.panelRegistro();
+			}
+		});
 		btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnRegistrarse.setBounds(418, 339, 202, 45);
 		add(btnRegistrarse);
