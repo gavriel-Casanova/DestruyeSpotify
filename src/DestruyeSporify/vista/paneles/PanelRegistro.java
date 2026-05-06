@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
@@ -111,13 +112,19 @@ public class PanelRegistro extends JPanel {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Date fechaSeleccionada = dateChooser.getDate();
-				java.sql.Date sqlDate = new java.sql.Date(fechaSeleccionada.getTime());
+				
 
-				controlador.registrarCliente(txtNombre.getText(), txtApellido.getSelectedText(), txtUsuario.getText(),
-						txtContraseña.getText(), txtConfirmarContraseña.getText(), sqlDate, comboBoxIdioma.getSelectedItem().toString(),
-						premiun);
-
+				if(null == txtNombre || null == txtApellido  || null == txtUsuario || null == txtContraseña || null == txtConfirmarContraseña) {
+					JOptionPane.showMessageDialog(null, "Los datos obligatorios no estan completos", "Error",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					Date fechaSeleccionada = dateChooser.getDate();
+					java.sql.Date sqlDate = new java.sql.Date(fechaSeleccionada.getTime());
+					
+					controlador.registrarCliente(txtNombre.getText(), txtApellido.getSelectedText(), txtUsuario.getText(),
+							txtContraseña.getText(), txtConfirmarContraseña.getText(), sqlDate, comboBoxIdioma.getSelectedItem().toString(),
+							premiun);
+				}
 			}
 		});
 		btnGuardar.setBounds(206, 350, 89, 23);
