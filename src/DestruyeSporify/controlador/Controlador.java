@@ -10,36 +10,43 @@ public class Controlador {
 
 	private DaoCliente daoCliente = null;
 	private Cliente sesion = null;
-	
-	
+
 	public Controlador() {
 		daoCliente = new DaoCliente();
 	}
-	
+
 	public void iniciar() {
 		MainFrame ventana = new MainFrame();
 		ventana.hacerVisible();
 	}
-	
+
 	public boolean validarLogin(String uss, String pass) {
 		boolean ret = false;
-		
-		Cliente cliente = daoCliente.getClienteByLogin(uss,pass);
-		
-		if(null != cliente) {
+
+		Cliente cliente = daoCliente.getClienteByLogin(uss, pass);
+
+		if (null != cliente) {
 			ret = true;
 		}
-		
+
 		sesion = cliente;
 		return ret;
 	}
-	
-	
-	public boolean registrarCliente(String nombre, String usuario, String pass, String passConfirm, Date fecNacimiento, String idioma, boolean premiun) {
+
+	public boolean registrarCliente(String nombre, String apellido, String usuario, String pass, String passConfirm,
+			Date fecNacimiento, String idioma, boolean premiun) {
 		boolean ret = false;
-		
-		
-		
+		Cliente cliente = new Cliente();
+		if (pass == passConfirm) {
+			cliente.setNombre(nombre);
+			cliente.setApellido(apellido);
+			cliente.setUsuario(usuario);
+			cliente.setContraseña(pass);
+			cliente.setFechaNacimiento(fecNacimiento);
+			cliente.setIdIdioma(idioma);
+			daoCliente.insert(cliente, premiun);
+			
+		}
 		return ret;
 	}
 }

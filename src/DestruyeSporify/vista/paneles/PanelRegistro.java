@@ -3,6 +3,8 @@ package DestruyeSporify.vista.paneles;
 import javax.swing.JPanel;
 
 import DestruyeSporify.controlador.Controlador;
+import DestruyeSporify.vista.ventanas.MainFrame;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,24 +24,10 @@ public class PanelRegistro extends JPanel {
 	private JTextField txtContraseña;
 	private JTextField txtConfirmarContraseña;
 
-	public PanelRegistro() {
+	public PanelRegistro(MainFrame ventana) {
 		setLayout(null);
 		
-		JButton btnAtras = new JButton("Atrás");
-		btnAtras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnAtras.setBounds(26, 350, 89, 23);
-		add(btnAtras);
-		
-		JButton btnGuardar = new JButton("Guardar");
-		btnGuardar.setBounds(206, 350, 89, 23);
-		add(btnGuardar);
-		
-		JButton btnComprarPremiun = new JButton("ComprarPremiun");
-		btnComprarPremiun.setBounds(382, 350, 133, 23);
-		add(btnComprarPremiun);
+		setSize(545, 400);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setBounds(34, 45, 46, 14);
@@ -97,5 +85,32 @@ public class PanelRegistro extends JPanel {
 		JComboBox comboBoxIdioma = new JComboBox();
 		comboBoxIdioma.setBounds(72, 218, 133, 22);
 		add(comboBoxIdioma);
+		
+		JButton btnAtras = new JButton("Atrás");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.panelLogin();
+			}
+		});
+		btnAtras.setBounds(26, 350, 89, 23);
+		add(btnAtras);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnGuardar.setBounds(206, 350, 89, 23);
+		add(btnGuardar);
+		
+		JButton btnComprarPremiun = new JButton("Comprar Premiun");
+		btnComprarPremiun.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnComprarPremiun.setBounds(382, 350, 133, 23);
+		add(btnComprarPremiun);
 	}
 }
