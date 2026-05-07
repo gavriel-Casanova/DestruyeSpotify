@@ -33,6 +33,7 @@ public class PanelRegistro extends JPanel {
 	private JComboBox<String> comboBoxIdioma = null;
 
 	public PanelRegistro(MainFrame ventana) {
+		controlador = new Controlador();
 		setLayout(null);
 
 		setSize(549, 363);
@@ -112,18 +113,24 @@ public class PanelRegistro extends JPanel {
 		JButton btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				if (null == txtNombre || null == txtApellido || null == txtUsuario || null == txtContraseña
-						|| null == txtConfirmarContraseña) {
+				boolean exitoso = false;
+				if (null == txtNombre.getText() || null == txtApellido.getText() || null == txtUsuario.getText() || null == txtContraseña.getText()
+						|| null == txtConfirmarContraseña.getText() || null == dateChooser.getDate()) {
 					JOptionPane.showMessageDialog(null, "Los datos obligatorios no estan completos", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
 					Date fechaSeleccionada = dateChooser.getDate();
 					java.sql.Date sqlDate = new java.sql.Date(fechaSeleccionada.getTime());
 
-					controlador.registrarCliente(txtNombre.getText(), txtApellido.getSelectedText(),
+					exitoso = controlador.registrarCliente(txtNombre.getText(), txtApellido.getText(),
 							txtUsuario.getText(), txtContraseña.getText(), txtConfirmarContraseña.getText(), sqlDate,
 							comboBoxIdioma.getSelectedItem().toString(), premiun);
+					if(exitoso) {
+						ventana.panelLogin();
+					} else {
+						JOptionPane.showMessageDialog(null, "Los datos ingresados son erroneos", "Error",
+								JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 		});

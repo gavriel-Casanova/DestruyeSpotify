@@ -29,6 +29,7 @@ public class MainFrame extends JFrame{
 	public void panelLogin() {
 		setTitle("Login - Destruye Spotify");
 		PanelLogin panelLogin = new PanelLogin(this);
+		setSize(800, 600);
 		setContentPane(panelLogin);
 	}
 	
