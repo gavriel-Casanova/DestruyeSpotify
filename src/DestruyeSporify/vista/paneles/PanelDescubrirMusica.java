@@ -4,6 +4,10 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 
 public class PanelDescubrirMusica extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public PanelDescubrirMusica() {
 		setLayout(null);
 		
@@ -16,9 +20,6 @@ public class PanelDescubrirMusica extends JPanel{
 		add(btnVerPerfil);
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	
 }

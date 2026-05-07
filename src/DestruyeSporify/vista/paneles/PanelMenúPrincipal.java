@@ -1,6 +1,9 @@
 package DestruyeSporify.vista.paneles;
 
 import javax.swing.JPanel;
+
+import DestruyeSporify.vista.ventanas.MainFrame;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -8,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PanelMenúPrincipal extends JPanel {
-	public PanelMenúPrincipal() {
+	public PanelMenúPrincipal(MainFrame ventana) {
 		setLayout(null);
 		
 		JLabel lblOpciones = new JLabel("OPCIONES");
@@ -25,22 +28,36 @@ public class PanelMenúPrincipal extends JPanel {
 		add(btnDescubrirMusica);
 		
 		JButton btnDescubrirPodcast = new JButton("Descubrir Podcast");
+		btnDescubrirPodcast.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnDescubrirPodcast.setBounds(137, 139, 177, 23);
 		add(btnDescubrirPodcast);
 		
 		JButton btnMisPlaylist = new JButton("Mis Playlist");
+		btnMisPlaylist.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnMisPlaylist.setBounds(137, 199, 177, 23);
 		add(btnMisPlaylist);
 		
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventana.panelLogin();
 			}
 		});
 		btnAtras.setBounds(29, 256, 89, 23);
 		add(btnAtras);
 		
 		JButton btnVerPerfil = new JButton("Ver Perfil");
+		btnVerPerfil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnVerPerfil.setBounds(343, 256, 89, 23);
 		add(btnVerPerfil);
 	}
