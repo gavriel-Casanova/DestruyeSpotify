@@ -56,6 +56,7 @@ public class MainFrame extends JFrame{
 		setSize(473, 309);
 		setTitle("Perfil - Destruye Spotify");
 		PanelPerfil panelPerfil = new PanelPerfil(this, controlador.getClienteSesion(), controlador);
+		setContentPane(panelPerfil);
 	}
 	
 	

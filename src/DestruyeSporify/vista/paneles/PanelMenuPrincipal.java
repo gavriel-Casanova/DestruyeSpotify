@@ -58,7 +58,7 @@ public class PanelMenuPrincipal extends JPanel {
 		JButton btnVerPerfil = new JButton("Ver Perfil");
 		btnVerPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ventana.panelPerfil();
 			}
 		});
 		btnVerPerfil.setBounds(343, 256, 89, 23);
