@@ -6,6 +6,11 @@ public class Podcast extends Audio {
 		super(idAudio, nombre, tipo, nReproducciones, duracion);
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public Podcast() {
+		
+	}
 
 	private int idPodcast = 0;
 	private Podcaster podcaster = null;
@@ -48,5 +53,5 @@ public class Podcast extends Audio {
 		this.podcaster = podcaster;
 		this.colaboradores = colaboradores;
 	}
-
+	
 }

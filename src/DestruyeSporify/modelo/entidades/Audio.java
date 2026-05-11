@@ -63,4 +63,8 @@ public class Audio {
 		this.duracion = duracion;
 	}
 
+	public Audio() {
+		super();
+	}
+
 }

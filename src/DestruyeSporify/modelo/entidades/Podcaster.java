@@ -7,4 +7,9 @@ public class Podcaster extends Artista {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Podcaster() {
+		super();
+	}
+
+
 }

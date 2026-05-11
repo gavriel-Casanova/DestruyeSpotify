@@ -52,6 +52,11 @@ public class Artista {
 		this.descripcion = descripcion;
 		this.genero = genero;
 	}
+
+	public Artista() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 
 }
