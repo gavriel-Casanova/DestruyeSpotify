@@ -22,7 +22,6 @@ public class PanelRegistro extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Controlador controlador = null;
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtUsuario;
@@ -32,10 +31,8 @@ public class PanelRegistro extends JPanel {
 	private boolean premiun = false;
 	private JComboBox<String> comboBoxIdioma = null;
 
-	public PanelRegistro(MainFrame ventana) {
-		controlador = new Controlador();
+	public PanelRegistro(MainFrame ventana, Controlador controlador) {
 		setLayout(null);
-
 		setSize(549, 363);
 
 		JLabel lblNombre = new JLabel("Nombre:");

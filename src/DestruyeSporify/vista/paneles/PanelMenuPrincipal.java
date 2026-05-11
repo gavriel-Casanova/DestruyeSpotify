@@ -2,6 +2,7 @@ package DestruyeSporify.vista.paneles;
 
 import javax.swing.JPanel;
 
+import DestruyeSporify.controlador.Controlador;
 import DestruyeSporify.vista.ventanas.MainFrame;
 
 import javax.swing.JLabel;
@@ -11,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PanelMenuPrincipal extends JPanel {
-	public PanelMenuPrincipal(MainFrame ventana) {
+	public PanelMenuPrincipal(MainFrame ventana, Controlador controlador) {
 		setLayout(null);
 		setSize(500,350);
 		

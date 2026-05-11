@@ -21,12 +21,10 @@ public class PanelLogin extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Controlador controlador = null;
 	private JTextField txtUsuario;
 	private JPasswordField psfPassword;
 	
-	public PanelLogin (MainFrame ventana) {
-		controlador = new Controlador();
+	public PanelLogin (MainFrame ventana, Controlador controlador) {
 		setBackground(Color.PINK);
 		setSize(800, 600);
 		setLayout(null);

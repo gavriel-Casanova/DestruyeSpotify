@@ -54,4 +54,10 @@ public class Controlador {
 		}
 		return ret;
 	}
+	
+	public Cliente getClienteSesion() {
+		return sesion;
+	}
+	
+	
 }
