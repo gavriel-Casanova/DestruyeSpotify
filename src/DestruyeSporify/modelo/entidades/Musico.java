@@ -27,4 +27,10 @@ public class Musico extends Artista {
 		this.caracteristicas = caracteristicas;
 	}
 
+	public Musico() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+
 }
