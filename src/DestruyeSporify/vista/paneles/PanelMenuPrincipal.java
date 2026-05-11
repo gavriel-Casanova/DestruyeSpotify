@@ -10,9 +10,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class PanelMenúPrincipal extends JPanel {
-	public PanelMenúPrincipal(MainFrame ventana) {
+public class PanelMenuPrincipal extends JPanel {
+	public PanelMenuPrincipal(MainFrame ventana) {
 		setLayout(null);
+		setSize(500,350);
 		
 		JLabel lblOpciones = new JLabel("OPCIONES");
 		lblOpciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -22,6 +23,7 @@ public class PanelMenúPrincipal extends JPanel {
 		JButton btnDescubrirMusica = new JButton("Descubrir Musica");
 		btnDescubrirMusica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		btnDescubrirMusica.setBounds(137, 84, 177, 23);

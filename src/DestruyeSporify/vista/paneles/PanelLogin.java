@@ -48,6 +48,8 @@ public class PanelLogin extends JPanel {
 				if(!valido) {
 					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta", "Error",
 							JOptionPane.ERROR_MESSAGE);
+				} else {
+					ventana.panelMenuPrincipal();
 				}
 			}
 		});

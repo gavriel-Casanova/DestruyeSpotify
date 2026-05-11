@@ -4,6 +4,7 @@ package DestruyeSporify.vista.ventanas;
 import javax.swing.JFrame;
 
 import DestruyeSporify.vista.paneles.PanelLogin;
+import DestruyeSporify.vista.paneles.PanelMenuPrincipal;
 import DestruyeSporify.vista.paneles.PanelRegistro;
 
 public class MainFrame extends JFrame{
@@ -40,7 +41,12 @@ public class MainFrame extends JFrame{
 		setContentPane(panelRegistro);
 	}
 	
-	
+	public void panelMenuPrincipal() {
+		setSize(500,350);
+		setTitle("Menu principal - Destruye Spotify");
+		PanelMenuPrincipal panelMenu = new PanelMenuPrincipal(this);
+		setContentPane(panelMenu);
+	}
 	
 	
 }
