@@ -37,16 +37,27 @@ public class Controlador {
 			Date fecNacimiento, String idioma, boolean premiun) {
 		boolean ret = false;
 		Cliente cliente = new Cliente();
-		if (pass == passConfirm) {
+		if (pass.equals(passConfirm)) {
 			cliente.setNombre(nombre);
 			cliente.setApellido(apellido);
 			cliente.setUsuario(usuario);
 			cliente.setContraseña(pass);
 			cliente.setFechaNacimiento(fecNacimiento);
 			cliente.setIdIdioma(idioma);
+			if(premiun == true) {
+				cliente.setTipo("premium");
+			}else {
+				cliente.setTipo("free");
+			}
 			daoCliente.insert(cliente, premiun);
-			
+			ret = true;
 		}
 		return ret;
 	}
+	
+	public Cliente getClienteSesion() {
+		return sesion;
+	}
+	
+	
 }

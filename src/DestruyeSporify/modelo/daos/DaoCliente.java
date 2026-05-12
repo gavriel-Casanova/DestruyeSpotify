@@ -135,4 +135,42 @@ public class DaoCliente {
 			}
 		}
 	}
+	
+	public void Update(Cliente log) {
+
+		Connection connection = null;
+
+		PreparedStatement preparedStatement = null;
+
+		try {
+			Class.forName(DBUtils.DRIVER);
+
+			connection = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
+
+			String sql = "UPDATE `cliente` SET `Nombre`= ?,`Apellido`= ?,`IdIdioma`= ? WHERE idCliente = ?";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, log.getNombre());
+			preparedStatement.setString(2, log.getApellido());
+			preparedStatement.setString(3, log.getIdIdioma());
+			preparedStatement.setInt(4, log.getIdCliente());
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException sqle) {
+			System.out.println("Error con la BBDD - " + sqle.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error generico - " + e.getMessage());
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} catch (Exception e) {
+			}
+			try {
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+			}
+		}
+	}
 }

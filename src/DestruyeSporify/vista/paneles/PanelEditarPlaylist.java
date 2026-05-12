@@ -5,6 +5,10 @@ import javax.swing.JButton;
 import javax.swing.JList;
 
 public class PanelEditarPlaylist extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public PanelEditarPlaylist() {
 		setLayout(null);
 		
@@ -21,9 +25,6 @@ public class PanelEditarPlaylist extends JPanel {
 		add(list);
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 	
 }
