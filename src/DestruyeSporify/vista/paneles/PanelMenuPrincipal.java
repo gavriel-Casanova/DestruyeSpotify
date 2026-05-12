@@ -12,7 +12,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PanelMenuPrincipal extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private PanelMenuPrincipal instance = null;
+	
 	public PanelMenuPrincipal(MainFrame ventana, Controlador controlador) {
+		instance = this;
 		setLayout(null);
 		setSize(500,350);
 		
@@ -65,8 +72,5 @@ public class PanelMenuPrincipal extends JPanel {
 		add(btnVerPerfil);
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 }

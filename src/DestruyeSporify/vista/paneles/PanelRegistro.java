@@ -30,8 +30,10 @@ public class PanelRegistro extends JPanel {
 	private JDateChooser dateChooser;
 	private boolean premiun = false;
 	private JComboBox<String> comboBoxIdioma = null;
+	private PanelRegistro instance = null;
 
 	public PanelRegistro(MainFrame ventana, Controlador controlador) {
+		instance = this;
 		setLayout(null);
 		setSize(549, 363);
 
@@ -101,7 +103,7 @@ public class PanelRegistro extends JPanel {
 		JButton btnAtras = new JButton("Atrás");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.panelLogin();
+				ventana.panelAnterior(instance);
 			}
 		});
 		btnAtras.setBounds(34, 281, 89, 23);
