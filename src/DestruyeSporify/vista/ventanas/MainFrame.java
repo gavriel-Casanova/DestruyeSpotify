@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import DestruyeSporify.controlador.Controlador;
+import DestruyeSporify.vista.paneles.PanelDescubrirMusica;
 import DestruyeSporify.vista.paneles.PanelLogin;
 import DestruyeSporify.vista.paneles.PanelMenuPrincipal;
 import DestruyeSporify.vista.paneles.PanelPerfil;
@@ -53,6 +54,9 @@ public class MainFrame extends JFrame {
 		} else if (paneles.get(panelActual - 1) instanceof PanelPerfil) {
 			setSize(473, 309);
 			setTitle("Perfil - Destruye Spotify");
+		}else if (paneles.get(panelActual - 1) instanceof PanelDescubrirMusica) {
+			setSize(470, 360);
+			setTitle("Descubrir musica - Destruye Spotify");
 		}
 
 		if (paneles.size() > 5) {
@@ -91,6 +95,14 @@ public class MainFrame extends JFrame {
 		PanelPerfil panelPerfil = new PanelPerfil(this, controlador.getClienteSesion(), controlador);
 		setContentPane(panelPerfil);
 		paneles.add(panelPerfil);
+	}
+	
+	public void panelDescubrirMusica() {
+		setSize(470, 360);
+		setTitle("Descubrir musica - Destruye Spotify");
+		PanelDescubrirMusica panelDescubrirMusica = new PanelDescubrirMusica(this, controlador);
+		setContentPane(panelDescubrirMusica);
+		paneles.add(panelDescubrirMusica);
 	}
 
 }

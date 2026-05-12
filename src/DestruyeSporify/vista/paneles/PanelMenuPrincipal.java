@@ -31,7 +31,7 @@ public class PanelMenuPrincipal extends JPanel {
 		JButton btnDescubrirMusica = new JButton("Descubrir Musica");
 		btnDescubrirMusica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ventana.panelDescubrirMusica();
 			}
 		});
 		btnDescubrirMusica.setBounds(137, 84, 177, 23);
