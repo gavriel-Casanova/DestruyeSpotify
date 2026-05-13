@@ -52,4 +52,8 @@ public class Album {
 		this.musico = musico;
 	}
 
+	public Album() {
+		super();
+	}
+
 }

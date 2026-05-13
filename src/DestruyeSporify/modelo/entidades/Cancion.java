@@ -38,4 +38,8 @@ public class Cancion extends Audio {
 		this.artistaInvitado = artistaInvitado;
 	}
 
+	public Cancion() {
+		super();
+	}
+	
 }
