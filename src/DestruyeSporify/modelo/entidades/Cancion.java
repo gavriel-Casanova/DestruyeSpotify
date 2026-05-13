@@ -1,14 +1,22 @@
 package DestruyeSporify.modelo.entidades;
 
-public class Cancion extends Audio {
+import java.util.Objects;
 
-	public Cancion(int idAudio, String nombre, String tipo, int nReproducciones, double duracion) {
-		super(idAudio, nombre, tipo, nReproducciones, duracion);
-		// TODO Auto-generated constructor stub
-	}
+public class Cancion extends Audio {
 
 	private Album album = null;
 	private String artistaInvitado = null;
+
+	public Cancion(int idAudio, String nombre, String tipo, String imagen, int nReproducciones, double duracion,
+			Album album, String artistaInvitado) {
+		super(idAudio, nombre, tipo, imagen, nReproducciones, duracion);
+		this.album = album;
+		this.artistaInvitado = artistaInvitado;
+	}
+
+	public Cancion() {
+		super();
+	}
 
 	public Album getAlbum() {
 		return album;
@@ -31,15 +39,25 @@ public class Cancion extends Audio {
 		return "Cancion [album=" + album + ", artistaInvitado=" + artistaInvitado + "]";
 	}
 
-	public Cancion(int idAudio, String nombre, String tipo, int nReproducciones, double duracion, Album album,
-			String artistaInvitado) {
-		super(idAudio, nombre, tipo, nReproducciones, duracion);
-		this.album = album;
-		this.artistaInvitado = artistaInvitado;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(album, artistaInvitado);
+		return result;
 	}
 
-	public Cancion() {
-		super();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cancion other = (Cancion) obj;
+		return Objects.equals(album, other.album) && Objects.equals(artistaInvitado, other.artistaInvitado);
 	}
+
 	
 }

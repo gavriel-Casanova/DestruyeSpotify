@@ -28,8 +28,10 @@ public class PanelPerfil extends JPanel {
 	private JTextField txtApellido;
 	private JDateChooser dateChooser;
 	private JComboBox<String> comboBoxIdioma = null;
+	private PanelPerfil instance = null;
 	
 	public PanelPerfil(MainFrame ventana, Cliente cliente, Controlador controlador) {
+		instance = this;
 		setLayout(null);
 		setSize(473, 309);
 
@@ -81,7 +83,7 @@ public class PanelPerfil extends JPanel {
 		JButton btnAtras = new JButton("Atrás");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ventana.panelLogin();
+				ventana.panelAnterior(instance);
 			}
 		});
 		btnAtras.setBounds(34, 226, 89, 23);
