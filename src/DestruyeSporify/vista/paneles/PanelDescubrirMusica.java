@@ -5,6 +5,7 @@ import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 import DestruyeSporify.controlador.Controlador;
+import DestruyeSporify.modelo.entidades.Cancion;
 import DestruyeSporify.vista.ventanas.MainFrame;
 
 import javax.swing.DefaultListModel;
@@ -12,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class PanelDescubrirMusica extends JPanel {
@@ -45,10 +47,11 @@ public class PanelDescubrirMusica extends JPanel {
 		add(btnVerPerfil);
 
 		DefaultListModel<String> modelo = new DefaultListModel<>();
-		modelo.addElement("Elemento 1");
-		modelo.addElement("Elemento 2");
-		modelo.addElement("Elemento 3");
-
+		ArrayList<Cancion> canciones = null;
+		for(int i =0;i<canciones.size();i++) {
+			modelo.addElement(canciones.get(i).getNombre()+ " - "+ canciones.get(i).getnReproducciones());
+		}
+		
 		JList<String> lstArtistas = new JList<>(modelo);
 		lstArtistas.setBounds(115, 92, 227, 208);
 

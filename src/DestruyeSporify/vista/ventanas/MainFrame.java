@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import DestruyeSporify.controlador.Controlador;
 import DestruyeSporify.vista.paneles.PanelDescubrirMusica;
+import DestruyeSporify.vista.paneles.PanelDescubrirPodcast;
 import DestruyeSporify.vista.paneles.PanelLogin;
 import DestruyeSporify.vista.paneles.PanelMenuPrincipal;
 import DestruyeSporify.vista.paneles.PanelPerfil;
@@ -103,6 +104,14 @@ public class MainFrame extends JFrame {
 		PanelDescubrirMusica panelDescubrirMusica = new PanelDescubrirMusica(this, controlador);
 		setContentPane(panelDescubrirMusica);
 		paneles.add(panelDescubrirMusica);
+	}
+	
+	public void panelDescubrirPodcast() {
+		setSize(470, 360);
+		setTitle("Descubrir podcast - Destruye Spotify");
+		PanelDescubrirPodcast panelDescubrirPodcast = new PanelDescubrirPodcast(this, controlador);
+		setContentPane(panelDescubrirPodcast);
+		paneles.add(panelDescubrirPodcast);
 	}
 
 }
