@@ -39,31 +39,28 @@ public class MainFrame extends JFrame {
 	}
 
 	public void panelAnterior(JPanel panel) {
-		int panelActual = paneles.indexOf(panel);
-		setContentPane(paneles.get(panelActual - 1));
+		int posiPanel = paneles.indexOf(paneles.getLast());
+		setContentPane(paneles.get(posiPanel - 1));
 
-		if (paneles.get(panelActual - 1) instanceof PanelLogin) {
+		if (paneles.get(posiPanel - 1) instanceof PanelLogin) {
 			setTitle("Login - Destruye Spotify");
 			setSize(800, 600);
-		} else if (paneles.get(panelActual - 1) instanceof PanelRegistro) {
+		} else if (paneles.get(posiPanel - 1) instanceof PanelRegistro) {
 			setTitle("Registrarse - Destruye Spotify");
 			setSize(545, 400);
 
-		} else if (paneles.get(panelActual - 1) instanceof PanelMenuPrincipal) {
+		} else if (paneles.get(posiPanel - 1) instanceof PanelMenuPrincipal) {
 			setSize(500, 350);
 			setTitle("Menu principal - Destruye Spotify");
-		} else if (paneles.get(panelActual - 1) instanceof PanelPerfil) {
+		} else if (paneles.get(posiPanel - 1) instanceof PanelPerfil) {
 			setSize(473, 309);
 			setTitle("Perfil - Destruye Spotify");
-		}else if (paneles.get(panelActual - 1) instanceof PanelDescubrirMusica) {
+		}else if (paneles.get(posiPanel - 1) instanceof PanelDescubrirMusica) {
 			setSize(470, 360);
 			setTitle("Descubrir musica - Destruye Spotify");
 		}
 
-		if (paneles.size() > 5) {
-			paneles.remove(0);
-		}
-		paneles.add(panel);
+		paneles.removeLast();
 	}
 
 	public void panelLogin() {
