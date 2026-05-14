@@ -9,6 +9,10 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 public class PanelArtista extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public PanelArtista() {
 		setLayout(null);
 		
@@ -38,8 +42,5 @@ public class PanelArtista extends JPanel{
 		add(lblNewLabel);
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
 }

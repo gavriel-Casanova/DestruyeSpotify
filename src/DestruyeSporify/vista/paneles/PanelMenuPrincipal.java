@@ -40,6 +40,7 @@ public class PanelMenuPrincipal extends JPanel {
 		JButton btnDescubrirPodcast = new JButton("Descubrir Podcast");
 		btnDescubrirPodcast.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventana.panelDescubrirPodcast();
 			}
 		});
 		btnDescubrirPodcast.setBounds(137, 139, 177, 23);
