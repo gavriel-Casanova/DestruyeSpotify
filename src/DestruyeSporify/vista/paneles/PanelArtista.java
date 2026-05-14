@@ -9,17 +9,24 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextPane;
 
+import DestruyeSporify.controlador.Controlador;
+import DestruyeSporify.modelo.entidades.Artista;
+import DestruyeSporify.vista.ventanas.MainFrame;
+
 public class PanelArtista extends JPanel{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public PanelArtista() {
+	private PanelArtista instance = null; 
+	public PanelArtista(MainFrame ventana, Controlador controlador, Artista artista) {
+		instance = this;
 		setLayout(null);
 		
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventana.panelAnterior(instance);
 			}
 		});
 		btnAtras.setBounds(34, 29, 89, 23);
@@ -28,6 +35,7 @@ public class PanelArtista extends JPanel{
 		JButton btnVerPerfil = new JButton("Ver Perfil ");
 		btnVerPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventana.panelPerfil();
 			}
 		});
 		btnVerPerfil.setBounds(339, 29, 89, 23);
