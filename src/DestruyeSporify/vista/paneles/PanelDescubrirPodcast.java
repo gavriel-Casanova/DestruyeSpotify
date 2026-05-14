@@ -4,7 +4,9 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 
 import DestruyeSporify.controlador.Controlador;
+import DestruyeSporify.modelo.daos.DaoPodcaster;
 import DestruyeSporify.modelo.entidades.Podcast;
+import DestruyeSporify.modelo.entidades.Podcaster;
 import DestruyeSporify.vista.ventanas.MainFrame;
 
 import java.awt.event.ActionEvent;
@@ -21,7 +23,9 @@ public class PanelDescubrirPodcast extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private PanelDescubrirPodcast instance = null;
+	private DaoPodcaster daoPodcaster= null;
 	public PanelDescubrirPodcast(MainFrame ventana, Controlador controlador) {
+		daoPodcaster = new DaoPodcaster();
 		instance = this;
 		setLayout(null);
 		
@@ -44,9 +48,9 @@ public class PanelDescubrirPodcast extends JPanel{
 		add(btnVerPerfil);
 		
 		DefaultListModel<String> modelo = new DefaultListModel<>();
-		ArrayList<Podcast> podcast = null;
+		ArrayList<Podcaster> podcast = daoPodcaster.getPodcasterMasReproducidos();
 		for(int i =0;i<podcast.size();i++) {
-			modelo.addElement(podcast.get(i).getNombre()+ " - "+ podcast.get(i).getnReproducciones());
+			modelo.addElement(podcast.get(i).getNombreArtistico());
 		}
 		
 		JList<String> lstArtistas = new JList<>(modelo);

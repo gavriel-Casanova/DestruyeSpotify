@@ -58,6 +58,9 @@ public class MainFrame extends JFrame {
 		}else if (paneles.get(posiPanel - 1) instanceof PanelDescubrirMusica) {
 			setSize(470, 360);
 			setTitle("Descubrir musica - Destruye Spotify");
+		} else if (paneles.get(posiPanel - 1) instanceof PanelDescubrirPodcast) {
+			setSize(470, 360);
+			setTitle("Descubrir podcast - Destruye Spotify");
 		}
 
 		paneles.removeLast();

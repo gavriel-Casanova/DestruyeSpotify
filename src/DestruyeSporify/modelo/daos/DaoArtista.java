@@ -45,11 +45,13 @@ public class DaoArtista {
 				String nombreArtistico = resultSet.getString("idArtista");
 				String descripcion = resultSet.getString("descripcion");
 				String genero = resultSet.getString("genero");
+				String imagen = resultSet.getString("imagen");
 
 				artista.setIdArtiste(idArtista);
 				artista.setNombreArtistico(nombreArtistico);
 				artista.setDescripcion(descripcion);
 				artista.setGenero(genero);
+				artista.setImagen(imagen);
 
 				ret.add(artista);
 			}
@@ -118,11 +120,13 @@ public class DaoArtista {
 				String nombreArtistico = resultSet.getString("idArtista");
 				String descripcion = resultSet.getString("descripcion");
 				String genero = resultSet.getString("genero");
+				String imagen = resultSet.getString("imagen");
 
 				artista.setIdArtiste(idArtista);
 				artista.setNombreArtistico(nombreArtistico);
 				artista.setDescripcion(descripcion);
 				artista.setGenero(genero);
+				artista.setImagen(imagen);
 
 				ret = artista;
 			}
@@ -184,12 +188,15 @@ public class DaoArtista {
 				String nombreArtistico = resultSet.getString("nombreArtistico");
 				String descripcion = resultSet.getString("descripcion");
 				String genero = resultSet.getString("genero");
+				String imagen = resultSet.getString("imagen");
 				
 
 				artista.setIdArtiste(idArtista);
 				artista.setNombreArtistico(nombreArtistico);
 				artista.setDescripcion(descripcion);
 				artista.setGenero(genero);
+				artista.setImagen(imagen);
+				
 
 				ret.add(artista);
 			}
