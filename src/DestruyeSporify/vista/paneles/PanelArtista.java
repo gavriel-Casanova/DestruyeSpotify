@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JTextPane;
 
 public class PanelArtista extends JPanel{
 	/**
@@ -21,7 +22,7 @@ public class PanelArtista extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnAtras.setBounds(43, 49, 89, 23);
+		btnAtras.setBounds(34, 29, 89, 23);
 		add(btnAtras);
 		
 		JButton btnVerPerfil = new JButton("Ver Perfil ");
@@ -29,18 +30,50 @@ public class PanelArtista extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnVerPerfil.setBounds(339, 49, 89, 23);
+		btnVerPerfil.setBounds(339, 29, 89, 23);
 		add(btnVerPerfil);
 		
-		JList listListaArtistas = new JList();
-		listListaArtistas.setBounds(95, 116, 306, 173);
-		add(listListaArtistas);
+		JList listListaCanciones = new JList();
+		listListaCanciones.setBounds(34, 102, 180, 125);
+		add(listListaCanciones);
 		
-		JLabel lblNewLabel = new JLabel("Lista de artistas ");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setBounds(183, 91, 157, 14);
-		add(lblNewLabel);
+		JLabel lblListaCanciones = new JLabel("Lista de canciones");
+		lblListaCanciones.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblListaCanciones.setBounds(34, 77, 157, 14);
+		add(lblListaCanciones);
+		
+		JLabel lblInformacion = new JLabel("Informacion");
+		lblInformacion.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblInformacion.setBounds(249, 76, 178, 16);
+		add(lblInformacion);
+		
+		JLabel lblImagen = new JLabel("New label");
+		lblImagen.setBounds(34, 238, 180, 114);
+		add(lblImagen);
+		
+		JLabel lblNombreArt = new JLabel("Nombre artistico:");
+		lblNombreArt.setBounds(239, 103, 101, 23);
+		add(lblNombreArt);
+		
+		JLabel lblGenero = new JLabel("Genero:");
+		lblGenero.setBounds(239, 160, 71, 23);
+		add(lblGenero);
+		
+		JLabel lblDescripcion = new JLabel("Descripcion:");
+		lblDescripcion.setBounds(239, 213, 71, 23);
+		add(lblDescripcion);
+		
+		JTextPane txtPDescripcion = new JTextPane();
+		txtPDescripcion.setEditable(false);
+		txtPDescripcion.setBounds(249, 247, 180, 105);
+		add(txtPDescripcion);
+		
+		JLabel lblDatoGenero = new JLabel("");
+		lblDatoGenero.setBounds(239, 182, 126, 29);
+		add(lblDatoGenero);
+		
+		JLabel lblDatoNombre = new JLabel("");
+		lblDatoNombre.setBounds(239, 124, 126, 29);
+		add(lblDatoNombre);
 	}
-
-	
 }

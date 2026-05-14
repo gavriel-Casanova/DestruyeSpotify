@@ -18,6 +18,8 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelDescubrirMusica extends JPanel {
 	/**
@@ -58,6 +60,12 @@ public class PanelDescubrirMusica extends JPanel {
 		}
 		
 		JList<String> lstArtistas = new JList<>(modelo);
+		lstArtistas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		lstArtistas.setBounds(115, 92, 227, 208);
 
 		lstArtistas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
