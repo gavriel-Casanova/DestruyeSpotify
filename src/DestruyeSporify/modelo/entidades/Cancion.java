@@ -59,5 +59,4 @@ public class Cancion extends Audio {
 		return Objects.equals(album, other.album) && Objects.equals(artistaInvitado, other.artistaInvitado);
 	}
 
-	
 }

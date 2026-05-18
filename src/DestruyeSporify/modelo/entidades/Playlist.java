@@ -54,4 +54,8 @@ public class Playlist {
 		this.cliente = cliente;
 	}
 
+	public Playlist() {
+		super();
+	}
+
 }
