@@ -1,11 +1,26 @@
 package DestruyeSporify.modelo.entidades;
 
+import java.util.Objects;
+
 public class Album {
 	private int idAlbum = 0;
 	private String titulo = null;
 	private int año = 0;
-	// private musico= null;
+	private String imagen = null;
 	private Musico musico = null;
+
+	public Album(int idAlbum, String titulo, int año, String imagen, Musico musico) {
+		super();
+		this.idAlbum = idAlbum;
+		this.titulo = titulo;
+		this.año = año;
+		this.imagen = imagen;
+		this.musico = musico;
+	}
+
+	public Album() {
+		super();
+	}
 
 	public int getIdAlbum() {
 		return idAlbum;
@@ -31,6 +46,14 @@ public class Album {
 		this.año = año;
 	}
 
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
 	public Musico getMusico() {
 		return musico;
 	}
@@ -41,19 +64,26 @@ public class Album {
 
 	@Override
 	public String toString() {
-		return "Album [idAlbum=" + idAlbum + ", titulo=" + titulo + ", año=" + año + ", musico=" + musico + "]";
+		return "Album [idAlbum=" + idAlbum + ", titulo=" + titulo + ", año=" + año + ", imagen=" + imagen + ", musico="
+				+ musico + "]";
 	}
 
-	public Album(int idAlbum, String titulo, int año, Musico musico) {
-		super();
-		this.idAlbum = idAlbum;
-		this.titulo = titulo;
-		this.año = año;
-		this.musico = musico;
+	@Override
+	public int hashCode() {
+		return Objects.hash(año, idAlbum, imagen, musico, titulo);
 	}
 
-	public Album() {
-		super();
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Album other = (Album) obj;
+		return año == other.año && idAlbum == other.idAlbum && Objects.equals(imagen, other.imagen)
+				&& Objects.equals(musico, other.musico) && Objects.equals(titulo, other.titulo);
 	}
 
 }

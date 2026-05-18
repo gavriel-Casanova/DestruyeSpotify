@@ -1,13 +1,20 @@
 package DestruyeSporify.modelo.entidades;
 
+import java.util.Objects;
+
 public class Musico extends Artista {
 
-	public Musico(int idArtiste, String nombreArtistico, String descripcion, String genero) {
-		super(idArtiste, nombreArtistico, descripcion, genero);
-		// TODO Auto-generated constructor stub
+	private String caracteristicas = null;
+
+	public Musico(int idArtiste, String nombreArtistico, String imagen, String descripcion, String genero,
+			String caracteristicas) {
+		super(idArtiste, nombreArtistico, imagen, descripcion, genero);
+		this.caracteristicas = caracteristicas;
 	}
 
-	private String caracteristicas = null;
+	public Musico() {
+		super();
+	}
 
 	public String getCaracteristicas() {
 		return caracteristicas;
@@ -22,15 +29,26 @@ public class Musico extends Artista {
 		return "Musico [caracteristicas=" + caracteristicas + "]";
 	}
 
-	public Musico(int idArtiste, String nombreArtistico, String descripcion, String genero, String caracteristicas) {
-		super(idArtiste, nombreArtistico, descripcion, genero);
-		this.caracteristicas = caracteristicas;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(caracteristicas);
+		return result;
 	}
 
-	public Musico() {
-		super();
-		// TODO Auto-generated constructor stub
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Musico other = (Musico) obj;
+		return Objects.equals(caracteristicas, other.caracteristicas);
 	}
+	
 	
 
 }

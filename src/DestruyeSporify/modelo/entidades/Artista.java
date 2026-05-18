@@ -1,11 +1,26 @@
 package DestruyeSporify.modelo.entidades;
 
+import java.util.Objects;
+
 public class Artista {
 	private int idArtiste = 0;
 	private String nombreArtistico = null;
-	// private imagen = null;
+	private String imagen = null;
 	private String descripcion = null;
 	private String genero = null;
+
+	public Artista(int idArtiste, String nombreArtistico, String imagen, String descripcion, String genero) {
+		super();
+		this.idArtiste = idArtiste;
+		this.nombreArtistico = nombreArtistico;
+		this.imagen = imagen;
+		this.descripcion = descripcion;
+		this.genero = genero;
+	}
+
+	public Artista() {
+		super();
+	}
 
 	public int getIdArtiste() {
 		return idArtiste;
@@ -21,6 +36,14 @@ public class Artista {
 
 	public void setNombreArtistico(String nombreArtistico) {
 		this.nombreArtistico = nombreArtistico;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	public String getDescripcion() {
@@ -41,22 +64,27 @@ public class Artista {
 
 	@Override
 	public String toString() {
-		return "Artista [idArtiste=" + idArtiste + ", nombreArtistico=" + nombreArtistico + ", descripcion="
-				+ descripcion + ", genero=" + genero + "]";
+		return "Artista [idArtiste=" + idArtiste + ", nombreArtistico=" + nombreArtistico + ", imagen=" + imagen
+				+ ", descripcion=" + descripcion + ", genero=" + genero + "]";
 	}
 
-	public Artista(int idArtiste, String nombreArtistico, String descripcion, String genero) {
-		super();
-		this.idArtiste = idArtiste;
-		this.nombreArtistico = nombreArtistico;
-		this.descripcion = descripcion;
-		this.genero = genero;
+	@Override
+	public int hashCode() {
+		return Objects.hash(descripcion, genero, idArtiste, imagen, nombreArtistico);
 	}
 
-	public Artista() {
-		super();
-		// TODO Auto-generated constructor stub
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Artista other = (Artista) obj;
+		return Objects.equals(descripcion, other.descripcion) && Objects.equals(genero, other.genero)
+				&& idArtiste == other.idArtiste && Objects.equals(imagen, other.imagen)
+				&& Objects.equals(nombreArtistico, other.nombreArtistico);
 	}
-	
 
 }

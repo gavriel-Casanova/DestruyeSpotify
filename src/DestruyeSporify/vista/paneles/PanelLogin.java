@@ -21,12 +21,10 @@ public class PanelLogin extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Controlador controlador = null;
 	private JTextField txtUsuario;
 	private JPasswordField psfPassword;
 	
-	public PanelLogin (MainFrame ventana) {
-		controlador = new Controlador();
+	public PanelLogin (MainFrame ventana, Controlador controlador) {
 		setBackground(Color.PINK);
 		setSize(800, 600);
 		setLayout(null);
@@ -48,6 +46,8 @@ public class PanelLogin extends JPanel {
 				if(!valido) {
 					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta", "Error",
 							JOptionPane.ERROR_MESSAGE);
+				} else {
+					ventana.panelMenuPrincipal();
 				}
 			}
 		});
@@ -55,6 +55,11 @@ public class PanelLogin extends JPanel {
 		add(btnLogin);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.panelRegistro();
+			}
+		});
 		btnRegistrarse.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnRegistrarse.setBounds(418, 339, 202, 45);
 		add(btnRegistrarse);

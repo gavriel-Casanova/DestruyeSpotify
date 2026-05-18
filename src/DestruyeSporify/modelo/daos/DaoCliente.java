@@ -2,6 +2,7 @@ package DestruyeSporify.modelo.daos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -75,5 +76,101 @@ public class DaoCliente {
 			}
 		}
 		return ret;
+	}
+	
+	public void insert(Cliente log, boolean premiun) { //
+
+		Connection connection = null;
+
+		Statement statement = null;
+
+		try {
+
+			Class.forName(DBUtils.DRIVER);
+
+			connection = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
+
+			statement = connection.createStatement();
+
+			String sql = "INSERT INTO cliente ( nombre ,  apellido , contraseña ,  fechaNacimiento, fechaRegistro, tipo, usuario ) VALUES (?,?,?,?, CURRENT_DATE ,?, ?)";
+			PreparedStatement ps = connection.prepareStatement(sql);
+
+			ps.setString(1, log.getNombre());
+			ps.setString(2, log.getApellido());
+			ps.setString(3, log.getContraseña());
+			ps.setDate(4, log.getFechaNacimiento());
+			ps.setString(5, log.getTipo());
+			ps.setString(6, log.getUsuario());
+			
+
+			ps.executeUpdate();
+			
+			if(premiun) {
+				Cliente cliente = getClienteByLogin(log.getUsuario(), log.getContraseña());
+				sql = "INSERT INTO premium (IdCliente, FechaCaducidad) VALUES (?,DATE_ADD(NOW(), INTERVAL 1 MONTH))";
+				ps = connection.prepareStatement(sql);
+
+				ps.setInt(1, cliente.getIdCliente());
+				
+				ps.executeUpdate();
+			}
+
+		} catch (SQLException sqle) {
+			System.out.println("Error con la BBDD - " + sqle.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error generico - " + e.getMessage());
+		} finally {
+
+			try {
+				if (statement != null)
+					statement.close();
+			} catch (Exception e) {
+
+			}
+			try {
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+
+			}
+		}
+	}
+	
+	public void Update(Cliente log) {
+
+		Connection connection = null;
+
+		PreparedStatement preparedStatement = null;
+
+		try {
+			Class.forName(DBUtils.DRIVER);
+
+			connection = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
+
+			String sql = "UPDATE `cliente` SET `Nombre`= ?,`Apellido`= ?,`IdIdioma`= ? WHERE idCliente = ?";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, log.getNombre());
+			preparedStatement.setString(2, log.getApellido());
+			preparedStatement.setString(3, log.getIdIdioma());
+			preparedStatement.setInt(4, log.getIdCliente());
+
+			preparedStatement.executeUpdate();
+
+		} catch (SQLException sqle) {
+			System.out.println("Error con la BBDD - " + sqle.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error generico - " + e.getMessage());
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} catch (Exception e) {
+			}
+			try {
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+			}
+		}
 	}
 }
