@@ -16,10 +16,8 @@ import DestruyeSporify.vista.paneles.PanelRegistro;
 
 public class MainFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private Controlador controlador = null;
 	private ArrayList<JPanel> paneles = null;
 
@@ -49,7 +47,6 @@ public class MainFrame extends JFrame {
 		} else if (paneles.get(posiPanel - 1) instanceof PanelRegistro) {
 			setTitle("Registrarse - Destruye Spotify");
 			setSize(545, 400);
-
 		} else if (paneles.get(posiPanel - 1) instanceof PanelMenuPrincipal) {
 			setSize(500, 350);
 			setTitle("Menu principal - Destruye Spotify");

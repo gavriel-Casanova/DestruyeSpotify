@@ -12,10 +12,12 @@ import DestruyeSporify.vista.ventanas.MainFrame;
 
 public class Controlador {
 
-	private DaoCliente daoCliente = null;
+	
 	private Cliente sesion = null;
-	private DaoArtista daoArtista = null;
 
+	private DaoArtista daoArtista = null;
+	private DaoCliente daoCliente = null;
+	
 	public Controlador() {
 		daoCliente = new DaoCliente();
 		daoArtista = new DaoArtista();
@@ -30,11 +32,9 @@ public class Controlador {
 		boolean ret = false;
 
 		Cliente cliente = daoCliente.getClienteByLogin(uss, pass);
-
 		if (null != cliente) {
 			ret = true;
 		}
-
 		sesion = cliente;
 		return ret;
 	}
