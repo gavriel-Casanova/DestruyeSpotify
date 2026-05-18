@@ -1,8 +1,12 @@
 package DestruyeSporify.controlador;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
+import DestruyeSporify.modelo.daos.DaoArtista;
 import DestruyeSporify.modelo.daos.DaoCliente;
+import DestruyeSporify.modelo.entidades.Album;
+import DestruyeSporify.modelo.entidades.Artista;
 import DestruyeSporify.modelo.entidades.Cliente;
 import DestruyeSporify.vista.ventanas.MainFrame;
 
@@ -10,9 +14,11 @@ public class Controlador {
 
 	private DaoCliente daoCliente = null;
 	private Cliente sesion = null;
+	private DaoArtista daoArtista = null;
 
 	public Controlador() {
 		daoCliente = new DaoCliente();
+		daoArtista = new DaoArtista();
 	}
 
 	public void iniciar() {
@@ -59,7 +65,16 @@ public class Controlador {
 		return sesion;
 	}
 	
+	public Artista getArtistaSeleccionado(String nombre) {
+		Artista ret = daoArtista.getByNombre(nombre); 
+		return ret;
+	}
 	
+	public ArrayList<Album> getAlbumsArtistas(){
+		ArrayList<Album> ret = null;
+		
+		return ret;
+	}
 	
 	 
 }

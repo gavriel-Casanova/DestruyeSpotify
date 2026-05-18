@@ -63,9 +63,7 @@ public class PanelDescubrirMusica extends JPanel {
 		lstArtistas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(null != lstArtistas.getSelectedValue() ) {
-					ventana.panelLogin();
-				}
+				
 			}
 		});
 		lstArtistas.setBounds(115, 92, 227, 208);
