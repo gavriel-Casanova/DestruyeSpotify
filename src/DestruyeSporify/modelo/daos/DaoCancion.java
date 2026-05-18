@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import DestruyeSporify.modelo.entidades.Album;
-import DestruyeSporify.modelo.entidades.Artista;
 import DestruyeSporify.modelo.entidades.Cancion;
 import DestruyeSporify.modelo.utils.DBUtils;
 
@@ -16,7 +15,7 @@ public class DaoCancion {
 	public Cancion getById(int id) {
 		Cancion ret = null;
 
-		String sql = "select * from cancion where id_cancion = " + id;
+		String sql = "select * from cancion where id_audio = " + id;
 
 		Connection connection = null;
 
@@ -160,13 +159,15 @@ public class DaoCancion {
 		}
 		return ret;
 	}
+
 	/**
 	 * 
 	 */
 	public ArrayList<Cancion> getByAlbum(Album album) {
 		ArrayList<Cancion> ret = null;
 
-		String sql = "select * from cancion where IdAlbum =" + album;
+		String sql = "select * from cancion c join album a on c.IdAlbum = a.IdAlbum where a.IdAlbum ="
+				+ album.getIdAlbum();
 
 		Connection connection = null;
 
@@ -192,7 +193,6 @@ public class DaoCancion {
 				int idAudio = resultSet.getInt("id");
 				String nombre = resultSet.getString("nombre");
 				String tipo = resultSet.getString("tipo");
-
 				int nReproducciones = resultSet.getInt("nReproducciones");
 				double duracion = resultSet.getDouble("duracion");
 				String artistaInvitado = resultSet.getString("artistaInvitado");
