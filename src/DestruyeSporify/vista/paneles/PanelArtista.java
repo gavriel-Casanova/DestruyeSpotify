@@ -52,8 +52,10 @@ public class PanelArtista extends JPanel{
 		
 		DefaultListModel<String> modelo = new DefaultListModel<>();
 		ArrayList<Album> albumnes = controlador.getAlbumsArtistas(artista);
-		for(int i =0;i<albumnes.size();i++) {
-			modelo.addElement(albumnes.get(i).getTitulo());
+		if(null != albumnes) {
+			for(int i =0;i<albumnes.size();i++) {
+				modelo.addElement(albumnes.get(i).getTitulo());
+			}
 		}
 		JList<String> listListaCanciones = new JList<>(modelo);
 		listListaCanciones.addMouseListener(new MouseAdapter() {
