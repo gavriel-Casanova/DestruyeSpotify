@@ -11,6 +11,7 @@ import DestruyeSporify.vista.paneles.PanelAlbum;
 import DestruyeSporify.vista.paneles.PanelArtista;
 import DestruyeSporify.vista.paneles.PanelDescubrirMusica;
 import DestruyeSporify.vista.paneles.PanelDescubrirPodcast;
+import DestruyeSporify.vista.paneles.PanelGestionPlaylist;
 import DestruyeSporify.vista.paneles.PanelLogin;
 import DestruyeSporify.vista.paneles.PanelMenuPrincipal;
 import DestruyeSporify.vista.paneles.PanelPerfil;
@@ -134,6 +135,14 @@ public class MainFrame extends JFrame {
 		PanelAlbum panelAlbum = new PanelAlbum(this, controlador, album);
 		setContentPane(panelAlbum);
 		paneles.add(panelAlbum);
+	}
+	
+	public void panelGestionPlaylist() {
+		setSize(500,300);
+		setTitle("Playlist - Destruye Spotify");
+		PanelGestionPlaylist panelGestionPlaylist = new PanelGestionPlaylist(this, controlador);
+		setContentPane(panelGestionPlaylist);
+		paneles.add(panelGestionPlaylist);
 	}
 
 }

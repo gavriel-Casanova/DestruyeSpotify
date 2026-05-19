@@ -15,17 +15,19 @@ import javax.swing.JTextPane;
 import DestruyeSporify.controlador.Controlador;
 import DestruyeSporify.modelo.entidades.Album;
 import DestruyeSporify.modelo.entidades.Artista;
+import DestruyeSporify.modelo.entidades.Podcast;
 import DestruyeSporify.vista.ventanas.MainFrame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class PanelArtista extends JPanel{
+public class PanelArtista extends JPanel {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private PanelArtista instance = null; 
+	private PanelArtista instance = null;
 	private Artista artista = null;
+
 	public PanelArtista(MainFrame ventana, Controlador controlador, Artista art) {
 		artista = art;
 		instance = this;
@@ -56,12 +58,20 @@ public class PanelArtista extends JPanel{
 			for(int i =0;i<albumnes.size();i++) {
 				modelo.addElement(albumnes.get(i).getTitulo());
 			}
+		} else {
+			ArrayList<Podcast> podcasts = controlador.getPodcastbyPodcaster(artista);
+			for(int i =0;i< podcasts.size();i++) {
+				modelo.addElement(podcasts.get(i).getNombre());
+			}
 		}
 		JList<String> listListaCanciones = new JList<>(modelo);
 		listListaCanciones.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.panelAlbum(controlador.getAlbumByNombre(listListaCanciones.getSelectedValue()));
+				if(null != albumnes){
+					ventana.panelAlbum(controlador.getAlbumByNombre(listListaCanciones.getSelectedValue()));
+				}
+				
 			}
 		});
 		listListaCanciones.setBounds(34, 102, 180, 125);

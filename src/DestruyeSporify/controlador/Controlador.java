@@ -7,27 +7,35 @@ import DestruyeSporify.modelo.daos.DaoAlbum;
 import DestruyeSporify.modelo.daos.DaoArtista;
 import DestruyeSporify.modelo.daos.DaoCancion;
 import DestruyeSporify.modelo.daos.DaoCliente;
+import DestruyeSporify.modelo.daos.DaoPlaylist;
+import DestruyeSporify.modelo.daos.DaoPodcast;
 import DestruyeSporify.modelo.entidades.Album;
 import DestruyeSporify.modelo.entidades.Artista;
 import DestruyeSporify.modelo.entidades.Cancion;
 import DestruyeSporify.modelo.entidades.Cliente;
+import DestruyeSporify.modelo.entidades.Playlist;
+import DestruyeSporify.modelo.entidades.Podcast;
+import DestruyeSporify.modelo.entidades.Podcaster;
 import DestruyeSporify.vista.ventanas.MainFrame;
 
 public class Controlador {
 
-	
 	private Cliente sesion = null;
 
 	private DaoArtista daoArtista = null;
 	private DaoCliente daoCliente = null;
 	private DaoAlbum daoAlbum = null;
-	private DaoCancion daoCancion= null;
-	
+	private DaoCancion daoCancion = null;
+	private DaoPodcast daoPodcast = null;
+	private DaoPlaylist daoPlaylist = null;
+
 	public Controlador() {
 		daoCliente = new DaoCliente();
 		daoArtista = new DaoArtista();
 		daoAlbum = new DaoAlbum();
 		daoCancion = new DaoCancion();
+		daoPodcast = new DaoPodcast();
+		daoPlaylist = new DaoPlaylist();
 	}
 
 	public void iniciar() {
@@ -57,9 +65,9 @@ public class Controlador {
 			cliente.setContraseña(pass);
 			cliente.setFechaNacimiento(fecNacimiento);
 			cliente.setIdIdioma(idioma);
-			if(premiun == true) {
+			if (premiun == true) {
 				cliente.setTipo("premium");
-			}else {
+			} else {
 				cliente.setTipo("free");
 			}
 			daoCliente.insert(cliente, premiun);
@@ -67,31 +75,39 @@ public class Controlador {
 		}
 		return ret;
 	}
-	
+
 	public Cliente getClienteSesion() {
 		return sesion;
 	}
-	
+
 	public Artista getArtistaSeleccionado(String nombre) {
-		Artista ret = daoArtista.getByNombre(nombre); 
+		Artista ret = daoArtista.getByNombre(nombre);
 		return ret;
 	}
-	
-	public ArrayList<Album> getAlbumsArtistas(Artista artista){
-		ArrayList<Album> ret = daoAlbum.getAlbumByArtista(artista); 
+
+	public ArrayList<Album> getAlbumsArtistas(Artista artista) {
+		ArrayList<Album> ret = daoAlbum.getAlbumByArtista(artista);
 		return ret;
 	}
-	
+
 	public Album getAlbumByNombre(String nombre) {
 		Album ret = daoAlbum.getAlbumBytitulo(nombre);
 		return ret;
 	}
-	
-	public ArrayList<Cancion> getCancionesAlbum(Album album){
-		ArrayList<Cancion> ret= daoCancion.getByAlbum(album);
-		
+
+	public ArrayList<Cancion> getCancionesAlbum(Album album) {
+		ArrayList<Cancion> ret = daoCancion.getByAlbum(album);
 		return ret;
 	}
-	
-	 
+
+	public ArrayList<Podcast> getPodcastbyPodcaster(Artista artista) {
+		ArrayList<Podcast> ret = daoPodcast.getPodcasByPodcaster(artista);
+
+		return ret;
+	}
+
+	public ArrayList<Playlist> getPlaylistByCliente() {
+		ArrayList<Playlist> ret = daoPlaylist.getByCliente(sesion);
+		return ret;
+	}
 }

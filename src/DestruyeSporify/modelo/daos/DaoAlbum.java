@@ -14,11 +14,10 @@ import DestruyeSporify.modelo.utils.DBUtils;
 
 public class DaoAlbum {
 
-	
 	public ArrayList<Album> getAlbumByArtista(Artista artista) {
 		ArrayList<Album> ret = null;
 
-		String sql = "select * from album where idMusico = "+artista.getIdArtiste();
+		String sql = "select * from album where idMusico = " + artista.getIdArtiste();
 
 		Connection connection = null;
 
@@ -80,11 +79,11 @@ public class DaoAlbum {
 		}
 		return ret;
 	}
-	
+
 	public Album getAlbumByid(int id) {
 		Album ret = null;
 
-		String sql = "select * from album where idAlbum = "+id;
+		String sql = "select * from album where idAlbum = " + id;
 
 		Connection connection = null;
 
@@ -102,7 +101,6 @@ public class DaoAlbum {
 
 			while (resultSet.next()) {
 
-
 				Album album = new Album();
 
 				int idAlbum = resultSet.getInt("idAlbum");
@@ -115,7 +113,6 @@ public class DaoAlbum {
 				ret.setAño(año);
 				ret.setImagen(imagen);
 
-				
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
@@ -144,11 +141,11 @@ public class DaoAlbum {
 		}
 		return ret;
 	}
-	
+
 	public Album getAlbumBytitulo(String tit) {
 		Album ret = null;
 
-		String sql = "select * from album where titulo = '"+tit+"'";
+		String sql = "select * from album where titulo = '" + tit + "'";
 
 		Connection connection = null;
 
@@ -166,7 +163,6 @@ public class DaoAlbum {
 
 			while (resultSet.next()) {
 
-
 				ret = new Album();
 
 				int idAlbum = resultSet.getInt("idAlbum");
@@ -179,7 +175,6 @@ public class DaoAlbum {
 				ret.setAño(año);
 				ret.setImagen(imagen);
 
-				
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
