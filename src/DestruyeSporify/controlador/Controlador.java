@@ -3,6 +3,7 @@ package DestruyeSporify.controlador;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import DestruyeSporify.modelo.daos.DaoAlbum;
 import DestruyeSporify.modelo.daos.DaoArtista;
 import DestruyeSporify.modelo.daos.DaoCliente;
 import DestruyeSporify.modelo.entidades.Album;
@@ -17,10 +18,12 @@ public class Controlador {
 
 	private DaoArtista daoArtista = null;
 	private DaoCliente daoCliente = null;
+	private DaoAlbum daoAlbum = null;
 	
 	public Controlador() {
 		daoCliente = new DaoCliente();
 		daoArtista = new DaoArtista();
+		daoAlbum = new DaoAlbum();
 	}
 
 	public void iniciar() {
@@ -70,9 +73,8 @@ public class Controlador {
 		return ret;
 	}
 	
-	public ArrayList<Album> getAlbumsArtistas(){
-		ArrayList<Album> ret = null;
-		
+	public ArrayList<Album> getAlbumsArtistas(Artista artista){
+		ArrayList<Album> ret = daoAlbum.getAlbumByArtista(artista); 
 		return ret;
 	}
 	

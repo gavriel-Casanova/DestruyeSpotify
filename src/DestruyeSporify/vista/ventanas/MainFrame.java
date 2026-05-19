@@ -59,6 +59,9 @@ public class MainFrame extends JFrame {
 		} else if (paneles.get(posiPanel - 1) instanceof PanelDescubrirPodcast) {
 			setSize(470, 360);
 			setTitle("Descubrir podcast - Destruye Spotify");
+		} else if (paneles.get(posiPanel - 1) instanceof PanelArtista) {
+			setSize(500,400);
+			setTitle("Artista - Destruye Spotify");
 		}
 
 		paneles.removeLast();
@@ -118,6 +121,10 @@ public class MainFrame extends JFrame {
 		PanelArtista panelArtista = new PanelArtista(this,controlador, controlador.getArtistaSeleccionado(artista));
 		setContentPane(panelArtista);
 		paneles.add(panelArtista);
+	}
+	
+	public void panelAlbum(int idAlbum) {
+		
 	}
 
 }

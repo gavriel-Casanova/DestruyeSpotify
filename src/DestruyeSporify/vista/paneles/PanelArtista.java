@@ -1,16 +1,19 @@
 package DestruyeSporify.vista.paneles;
 
 import javax.swing.JPanel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextPane;
 
 import DestruyeSporify.controlador.Controlador;
+import DestruyeSporify.modelo.entidades.Album;
 import DestruyeSporify.modelo.entidades.Artista;
 import DestruyeSporify.vista.ventanas.MainFrame;
 
@@ -45,8 +48,12 @@ public class PanelArtista extends JPanel{
 		btnVerPerfil.setBounds(339, 29, 89, 23);
 		add(btnVerPerfil);
 		
-		JList listListaCanciones = new JList();
-		
+		DefaultListModel<String> modelo = new DefaultListModel<>();
+		ArrayList<Album> albumnes = controlador.getAlbumsArtistas(artista);
+		for(int i =0;i<albumnes.size();i++) {
+			modelo.addElement(albumnes.get(i).getTitulo());
+		}
+		JList listListaCanciones = new JList(modelo);
 		listListaCanciones.setBounds(34, 102, 180, 125);
 		add(listListaCanciones);
 		
@@ -88,10 +95,12 @@ public class PanelArtista extends JPanel{
 		
 		JLabel lblDatoGenero = new JLabel("");
 		lblDatoGenero.setBounds(239, 182, 126, 29);
+		lblDatoGenero.setText(artista.getGenero());
 		add(lblDatoGenero);
 		
 		JLabel lblDatoNombre = new JLabel("");
 		lblDatoNombre.setBounds(239, 124, 126, 29);
+		lblDatoNombre.setText(artista.getNombreArtistico());
 		add(lblDatoNombre);
 	}
 }

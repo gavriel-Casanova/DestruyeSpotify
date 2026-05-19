@@ -1,6 +1,7 @@
 package DestruyeSporify.modelo.daos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class DaoAlbum {
 	public ArrayList<Album> getAlbumByArtista(Artista artista) {
 		ArrayList<Album> ret = null;
 
-		String sql = "select * from album where idArtista = "+artista.getIdArtiste();
+		String sql = "select * from album where idMusico = "+artista.getIdArtiste();
 
 		Connection connection = null;
 
@@ -40,17 +41,15 @@ public class DaoAlbum {
 
 				Album album = new Album();
 
-				int idArtista = resultSet.getInt("idArtista");
-				String nombreArtistico = resultSet.getString("idArtista");
-				String descripcion = resultSet.getString("descripcion");
-				String genero = resultSet.getString("genero");
+				int idAlbum = resultSet.getInt("idAlbum");
+				String titulo = resultSet.getString("titulo");
+				Date año = resultSet.getDate("año");
 				String imagen = resultSet.getString("imagen");
 
-				artista.setIdArtiste(idArtista);
-				artista.setNombreArtistico(nombreArtistico);
-				artista.setDescripcion(descripcion);
-				artista.setGenero(genero);
-				artista.setImagen(imagen);
+				album.setIdAlbum(idAlbum);
+				album.setTitulo(titulo);
+				album.setAño(año.getYear());
+				album.setImagen(imagen);
 
 				ret.add(album);
 			}
