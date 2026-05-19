@@ -1,25 +1,26 @@
 package DestruyeSporify.modelo.entidades;
 
+import java.sql.Date;
 import java.util.Objects;
 
 public class Album {
 	private int idAlbum = 0;
 	private String titulo = null;
-	private int año = 0;
+	private Date año = null;
 	private String imagen = null;
 	private Musico musico = null;
+	
+	public Album() {
+		super();
+	}
 
-	public Album(int idAlbum, String titulo, int año, String imagen, Musico musico) {
+	public Album(int idAlbum, String titulo, Date año, String imagen, Musico musico) {
 		super();
 		this.idAlbum = idAlbum;
 		this.titulo = titulo;
 		this.año = año;
 		this.imagen = imagen;
 		this.musico = musico;
-	}
-
-	public Album() {
-		super();
 	}
 
 	public int getIdAlbum() {
@@ -38,11 +39,11 @@ public class Album {
 		this.titulo = titulo;
 	}
 
-	public int getAño() {
+	public Date getAño() {
 		return año;
 	}
 
-	public void setAño(int año) {
+	public void setAño(Date año) {
 		this.año = año;
 	}
 
@@ -82,8 +83,10 @@ public class Album {
 		if (getClass() != obj.getClass())
 			return false;
 		Album other = (Album) obj;
-		return año == other.año && idAlbum == other.idAlbum && Objects.equals(imagen, other.imagen)
+		return Objects.equals(año, other.año) && idAlbum == other.idAlbum && Objects.equals(imagen, other.imagen)
 				&& Objects.equals(musico, other.musico) && Objects.equals(titulo, other.titulo);
 	}
+
+	
 
 }

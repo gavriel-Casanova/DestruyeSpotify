@@ -166,7 +166,7 @@ public class DaoCancion {
 	public ArrayList<Cancion> getByAlbum(Album album) {
 		ArrayList<Cancion> ret = null;
 
-		String sql = "select * from cancion c join album a on c.IdAlbum = a.IdAlbum where a.IdAlbum ="
+		String sql = "select * from cancion c join album a on c.IdAlbum = a.IdAlbum join audio au on c.idCancion = au.idAudio where a.IdAlbum ="
 				+ album.getIdAlbum();
 
 		Connection connection = null;
@@ -190,12 +190,12 @@ public class DaoCancion {
 
 				Cancion cancion = new Cancion();
 
-				int idAudio = resultSet.getInt("id");
+				int idAudio = resultSet.getInt("idAudio");
 				String nombre = resultSet.getString("nombre");
 				String tipo = resultSet.getString("tipo");
 				int nReproducciones = resultSet.getInt("nReproducciones");
 				double duracion = resultSet.getDouble("duracion");
-				String artistaInvitado = resultSet.getString("artistaInvitado");
+				String artistaInvitado = resultSet.getString("artistas_Invitados");
 
 				cancion.setAlbum(null);
 				cancion.setArtistaInvitado(artistaInvitado);

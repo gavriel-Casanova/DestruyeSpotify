@@ -16,6 +16,8 @@ import DestruyeSporify.controlador.Controlador;
 import DestruyeSporify.modelo.entidades.Album;
 import DestruyeSporify.modelo.entidades.Artista;
 import DestruyeSporify.vista.ventanas.MainFrame;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelArtista extends JPanel{
 	/**
@@ -53,7 +55,13 @@ public class PanelArtista extends JPanel{
 		for(int i =0;i<albumnes.size();i++) {
 			modelo.addElement(albumnes.get(i).getTitulo());
 		}
-		JList listListaCanciones = new JList(modelo);
+		JList<String> listListaCanciones = new JList<>(modelo);
+		listListaCanciones.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.panelAlbum(controlador.getAlbumByNombre(listListaCanciones.getSelectedValue()));
+			}
+		});
 		listListaCanciones.setBounds(34, 102, 180, 125);
 		add(listListaCanciones);
 		

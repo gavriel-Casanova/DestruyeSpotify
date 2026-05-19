@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import DestruyeSporify.controlador.Controlador;
+import DestruyeSporify.modelo.entidades.Album;
+import DestruyeSporify.vista.paneles.PanelAlbum;
 import DestruyeSporify.vista.paneles.PanelArtista;
 import DestruyeSporify.vista.paneles.PanelDescubrirMusica;
 import DestruyeSporify.vista.paneles.PanelDescubrirPodcast;
@@ -62,6 +64,9 @@ public class MainFrame extends JFrame {
 		} else if (paneles.get(posiPanel - 1) instanceof PanelArtista) {
 			setSize(500,400);
 			setTitle("Artista - Destruye Spotify");
+		} else if (paneles.get(posiPanel - 1) instanceof PanelAlbum) {
+			setSize(460,370);
+			setTitle("Album - Destruye Spotify");
 		}
 
 		paneles.removeLast();
@@ -123,8 +128,12 @@ public class MainFrame extends JFrame {
 		paneles.add(panelArtista);
 	}
 	
-	public void panelAlbum(int idAlbum) {
-		
+	public void panelAlbum(Album album) {
+		setSize(460,370);
+		setTitle("Album - Destruye Spotify");
+		PanelAlbum panelAlbum = new PanelAlbum(this, controlador, album);
+		setContentPane(panelAlbum);
+		paneles.add(panelAlbum);
 	}
 
 }
