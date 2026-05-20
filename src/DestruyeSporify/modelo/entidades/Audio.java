@@ -7,8 +7,10 @@ public class Audio {
 	private String nombre = null;
 	private String tipo = null;
 	private String imagen = null;
+	private String archivo = null;
 	private int nReproducciones = 0;
 	private double duracion = 0;
+	private boolean reproduciendo = false;
 
 	public Audio(int idAudio, String nombre, String tipo, String imagen, int nReproducciones, double duracion) {
 		super();
@@ -18,6 +20,31 @@ public class Audio {
 		this.imagen = imagen;
 		this.nReproducciones = nReproducciones;
 		this.duracion = duracion;
+	}
+	
+	public boolean sonando() {
+		if (!reproduciendo) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	
+	public String getArchivo() {
+		return archivo;
+	}
+
+	public void setArchivo(String archivo) {
+		this.archivo = archivo;
+	}
+
+	public boolean isReproduciendo() {
+		return reproduciendo;
+	}
+
+	public void setReproduciendo(boolean reproduciendo) {
+		this.reproduciendo = reproduciendo;
 	}
 
 	public Audio() {

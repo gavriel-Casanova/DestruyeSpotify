@@ -15,7 +15,6 @@ import DestruyeSporify.modelo.entidades.Cancion;
 import DestruyeSporify.modelo.entidades.Cliente;
 import DestruyeSporify.modelo.entidades.Playlist;
 import DestruyeSporify.modelo.entidades.Podcast;
-import DestruyeSporify.modelo.entidades.Podcaster;
 import DestruyeSporify.vista.ventanas.MainFrame;
 
 public class Controlador {
@@ -110,4 +109,6 @@ public class Controlador {
 		ArrayList<Playlist> ret = daoPlaylist.getByCliente(sesion);
 		return ret;
 	}
+	
+	
 }

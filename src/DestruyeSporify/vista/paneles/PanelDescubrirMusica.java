@@ -67,7 +67,6 @@ public class PanelDescubrirMusica extends JPanel {
 			}
 		});
 		lstArtistas.setBounds(115, 92, 227, 208);
-
 		lstArtistas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		add(lstArtistas);
