@@ -101,7 +101,7 @@ public class DaoAlbum {
 
 			while (resultSet.next()) {
 
-				Album album = new Album();
+				ret= new Album();
 
 				int idAlbum = resultSet.getInt("idAlbum");
 				String titulo = resultSet.getString("titulo");
