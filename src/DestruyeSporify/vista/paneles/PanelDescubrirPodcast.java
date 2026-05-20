@@ -11,6 +11,8 @@ import DestruyeSporify.vista.ventanas.MainFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
@@ -54,6 +56,12 @@ public class PanelDescubrirPodcast extends JPanel{
 		}
 		
 		JList<String> lstArtistas = new JList<>(modelo);
+		lstArtistas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.panelArtista(lstArtistas.getSelectedValue());
+			}
+		});
 		lstArtistas.setBounds(115, 92, 227, 208);
 
 		lstArtistas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

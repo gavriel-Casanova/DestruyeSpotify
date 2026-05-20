@@ -49,6 +49,7 @@ public class PanelMenuPrincipal extends JPanel {
 		JButton btnMisPlaylist = new JButton("Mis Playlist");
 		btnMisPlaylist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventana.panelGestionPlaylist();
 			}
 		});
 		btnMisPlaylist.setBounds(137, 199, 177, 23);

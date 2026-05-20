@@ -92,7 +92,7 @@ public class DaoArtista {
 	public Artista getByNombre(String Nombre) {
 		Artista ret = null;
 
-		String sql = "select * from Artista where NombreArtistico = " + Nombre;
+		String sql = "select * from Artista where NombreArtistico = '" + Nombre+"'";
 
 		Connection connection = null;
 
@@ -117,7 +117,7 @@ public class DaoArtista {
 				Artista artista = new Artista();
 
 				int idArtista = resultSet.getInt("idArtista");
-				String nombreArtistico = resultSet.getString("idArtista");
+				String nombreArtistico = resultSet.getString("nombreArtistico");
 				String descripcion = resultSet.getString("descripcion");
 				String genero = resultSet.getString("genero");
 				String imagen = resultSet.getString("imagen");

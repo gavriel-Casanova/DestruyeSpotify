@@ -158,7 +158,7 @@ public class DaoPlaylist {
 	public ArrayList<Playlist> getByCliente(Cliente cliente) {
 		ArrayList<Playlist> ret = null;
 
-		String sql = "select * from playlist where id_cliente = " + cliente;
+		String sql = "select * from playlist where idCliente = " + cliente.getIdCliente();
 
 		Connection connection = null;
 

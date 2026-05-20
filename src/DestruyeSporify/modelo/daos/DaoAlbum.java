@@ -1,22 +1,23 @@
 package DestruyeSporify.modelo.daos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import DestruyeSporify.modelo.entidades.Podcast;
-import DestruyeSporify.modelo.entidades.Podcaster;
+import DestruyeSporify.modelo.entidades.Album;
+import DestruyeSporify.modelo.entidades.Artista;
 import DestruyeSporify.modelo.utils.DBUtils;
 
-public class DaoPodcaster {
+public class DaoAlbum {
 
-	public Podcaster getByNombre(String Nombre) {
-		Podcaster ret = null;
+	public ArrayList<Album> getAlbumByArtista(Artista artista) {
+		ArrayList<Album> ret = null;
 
-		String sql = "select * from podcaster where id_cancion = " + Nombre;
+		String sql = "select * from album where idMusico = " + artista.getIdArtiste();
 
 		Connection connection = null;
 
@@ -29,28 +30,27 @@ public class DaoPodcaster {
 
 			connection = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
 
-			// Vamos a lanzar la sentencia...
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(sql);
 
 			while (resultSet.next()) {
 
 				if (null == ret)
-					ret = new Podcaster();
+					ret = new ArrayList<Album>();
 
-				Podcaster podcaster = new Podcaster();
+				Album album = new Album();
 
-				int idArtirte = resultSet.getInt("idArtiste");
-				String nombreArtistico = resultSet.getString("nombreArtistico");
-				String descripcion = resultSet.getString("descripcion");
-				String genero = resultSet.getString("genero");
+				int idAlbum = resultSet.getInt("idAlbum");
+				String titulo = resultSet.getString("titulo");
+				Date año = resultSet.getDate("año");
+				String imagen = resultSet.getString("imagen");
 
-				podcaster.setDescripcion(descripcion);
-				podcaster.setGenero(genero);
-				podcaster.setIdArtiste(idArtirte);
-				podcaster.setNombreArtistico(nombreArtistico);
+				album.setIdAlbum(idAlbum);
+				album.setTitulo(titulo);
+				album.setAño(año);
+				album.setImagen(imagen);
 
-				ret = podcaster;
+				ret.add(album);
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
@@ -80,13 +80,10 @@ public class DaoPodcaster {
 		return ret;
 	}
 
-	/**
-	 * 
-	 */
-	public ArrayList<Podcaster> getAllPodcaster() {
-		ArrayList<Podcaster> ret = null;
+	public Album getAlbumByid(int id) {
+		Album ret = null;
 
-		String sql = "select * from Podcast";
+		String sql = "select * from album where idAlbum = " + id;
 
 		Connection connection = null;
 
@@ -104,88 +101,18 @@ public class DaoPodcaster {
 
 			while (resultSet.next()) {
 
-				if (null == ret)
-					ret = new ArrayList<Podcaster>();
+				Album album = new Album();
 
-				Podcaster podcaster = new Podcaster();
-				int idArtirte = resultSet.getInt("idArtiste");
-				String nombreArtistico = resultSet.getString("nombreArtistico");
-				String descripcion = resultSet.getString("descripcion");
-				String genero = resultSet.getString("genero");
+				int idAlbum = resultSet.getInt("idAlbum");
+				String titulo = resultSet.getString("titulo");
+				Date año = resultSet.getDate("año");
+				String imagen = resultSet.getString("imagen");
 
-				podcaster.setDescripcion(descripcion);
-				podcaster.setGenero(genero);
-				podcaster.setIdArtiste(idArtirte);
-				podcaster.setNombreArtistico(nombreArtistico);
+				ret.setIdAlbum(idAlbum);
+				ret.setTitulo(titulo);
+				ret.setAño(año);
+				ret.setImagen(imagen);
 
-				ret.add(podcaster);
-			}
-		} catch (SQLException sqle) {
-			System.out.println("Error con la BBDD - " + sqle.getMessage());
-		} catch (Exception e) {
-			System.out.println("Error generico - " + e.getMessage());
-		} finally {
-
-			try {
-				if (resultSet != null)
-					resultSet.close();
-			} catch (Exception e) {
-
-			}
-			try {
-				if (statement != null)
-					statement.close();
-			} catch (Exception e) {
-
-			}
-			try {
-				if (connection != null)
-					connection.close();
-			} catch (Exception e) {
-
-			}
-		}
-		return ret;
-	}
-	
-	public ArrayList<Podcaster> getPodcasterMasReproducidos() {
-		ArrayList<Podcaster> ret = null;
-
-		String sql = "select * from artista a join podcaster p on a.idartista = p.idpodcaster";
-
-		Connection connection = null;
-
-		Statement statement = null;
-		ResultSet resultSet = null;
-
-		try {
-
-			Class.forName(DBUtils.DRIVER);
-
-			connection = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
-
-			statement = connection.createStatement();
-			resultSet = statement.executeQuery(sql);
-
-			while (resultSet.next()) {
-
-				if (null == ret)
-					ret = new ArrayList<Podcaster>();
-
-				Podcaster artista = new Podcaster();
-
-				int idArtista = resultSet.getInt("idArtista");
-				String nombreArtistico = resultSet.getString("nombreArtistico");
-				String descripcion = resultSet.getString("descripcion");
-				String genero = resultSet.getString("genero");
-				
-
-				artista.setIdArtiste(idArtista);
-				artista.setNombreArtistico(nombreArtistico);
-				artista.setDescripcion(descripcion);
-				artista.setGenero(genero);
-
-				ret.add(artista);
 			}
 		} catch (SQLException sqle) {
 			System.out.println("Error con la BBDD - " + sqle.getMessage());
@@ -215,4 +142,65 @@ public class DaoPodcaster {
 		return ret;
 	}
 
+	public Album getAlbumBytitulo(String tit) {
+		Album ret = null;
+
+		String sql = "select * from album where titulo = '" + tit + "'";
+
+		Connection connection = null;
+
+		Statement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+
+			Class.forName(DBUtils.DRIVER);
+
+			connection = DriverManager.getConnection(DBUtils.URL, DBUtils.USER, DBUtils.PASS);
+
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(sql);
+
+			while (resultSet.next()) {
+
+				ret = new Album();
+
+				int idAlbum = resultSet.getInt("idAlbum");
+				String titulo = resultSet.getString("titulo");
+				Date año = resultSet.getDate("año");
+				String imagen = resultSet.getString("imagen");
+
+				ret.setIdAlbum(idAlbum);
+				ret.setTitulo(titulo);
+				ret.setAño(año);
+				ret.setImagen(imagen);
+
+			}
+		} catch (SQLException sqle) {
+			System.out.println("Error con la BBDD - " + sqle.getMessage());
+		} catch (Exception e) {
+			System.out.println("Error generico - " + e.getMessage());
+		} finally {
+
+			try {
+				if (resultSet != null)
+					resultSet.close();
+			} catch (Exception e) {
+
+			}
+			try {
+				if (statement != null)
+					statement.close();
+			} catch (Exception e) {
+
+			}
+			try {
+				if (connection != null)
+					connection.close();
+			} catch (Exception e) {
+
+			}
+		}
+		return ret;
+	}
 }

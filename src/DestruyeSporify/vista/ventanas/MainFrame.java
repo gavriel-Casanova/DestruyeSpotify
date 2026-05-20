@@ -6,8 +6,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import DestruyeSporify.controlador.Controlador;
+import DestruyeSporify.modelo.entidades.Album;
+import DestruyeSporify.vista.paneles.PanelAlbum;
+import DestruyeSporify.vista.paneles.PanelArtista;
 import DestruyeSporify.vista.paneles.PanelDescubrirMusica;
 import DestruyeSporify.vista.paneles.PanelDescubrirPodcast;
+import DestruyeSporify.vista.paneles.PanelGestionPlaylist;
 import DestruyeSporify.vista.paneles.PanelLogin;
 import DestruyeSporify.vista.paneles.PanelMenuPrincipal;
 import DestruyeSporify.vista.paneles.PanelPerfil;
@@ -15,10 +19,8 @@ import DestruyeSporify.vista.paneles.PanelRegistro;
 
 public class MainFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private Controlador controlador = null;
 	private ArrayList<JPanel> paneles = null;
 
@@ -48,7 +50,6 @@ public class MainFrame extends JFrame {
 		} else if (paneles.get(posiPanel - 1) instanceof PanelRegistro) {
 			setTitle("Registrarse - Destruye Spotify");
 			setSize(545, 400);
-
 		} else if (paneles.get(posiPanel - 1) instanceof PanelMenuPrincipal) {
 			setSize(500, 350);
 			setTitle("Menu principal - Destruye Spotify");
@@ -61,6 +62,12 @@ public class MainFrame extends JFrame {
 		} else if (paneles.get(posiPanel - 1) instanceof PanelDescubrirPodcast) {
 			setSize(470, 360);
 			setTitle("Descubrir podcast - Destruye Spotify");
+		} else if (paneles.get(posiPanel - 1) instanceof PanelArtista) {
+			setSize(500,400);
+			setTitle("Artista - Destruye Spotify");
+		} else if (paneles.get(posiPanel - 1) instanceof PanelAlbum) {
+			setSize(460,370);
+			setTitle("Album - Destruye Spotify");
 		}
 
 		paneles.removeLast();
@@ -112,6 +119,30 @@ public class MainFrame extends JFrame {
 		PanelDescubrirPodcast panelDescubrirPodcast = new PanelDescubrirPodcast(this, controlador);
 		setContentPane(panelDescubrirPodcast);
 		paneles.add(panelDescubrirPodcast);
+	}
+	
+	public void panelArtista(String artista) {
+		setSize(500,400);
+		setTitle("Artista - Destruye Spotify");
+		PanelArtista panelArtista = new PanelArtista(this,controlador, controlador.getArtistaSeleccionado(artista));
+		setContentPane(panelArtista);
+		paneles.add(panelArtista);
+	}
+	
+	public void panelAlbum(Album album) {
+		setSize(460,370);
+		setTitle("Album - Destruye Spotify");
+		PanelAlbum panelAlbum = new PanelAlbum(this, controlador, album);
+		setContentPane(panelAlbum);
+		paneles.add(panelAlbum);
+	}
+	
+	public void panelGestionPlaylist() {
+		setSize(500,300);
+		setTitle("Playlist - Destruye Spotify");
+		PanelGestionPlaylist panelGestionPlaylist = new PanelGestionPlaylist(this, controlador);
+		setContentPane(panelGestionPlaylist);
+		paneles.add(panelGestionPlaylist);
 	}
 
 }
