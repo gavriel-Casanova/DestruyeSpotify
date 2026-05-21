@@ -4,11 +4,14 @@ import javax.swing.JPanel;
 
 import DestruyeSporify.controlador.Controlador;
 import DestruyeSporify.controlador.ControladorSonido;
+import DestruyeSporify.modelo.entidades.Audio;
 import DestruyeSporify.vista.ventanas.MainFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
@@ -26,6 +29,11 @@ public class PanelReproduccion extends JPanel{
 	private JLabel lblFotoCancion = null;
 	
 	private boolean reproduccionActiva = false;
+	private int indexCancion =0;
+	private ArrayList<Audio>audios = null;
+	
+	// TODO 3 contructores desacoplados 1- generico 2- reproduccion desde album 3-reproduccion desde playlist
+	
 	public PanelReproduccion(MainFrame ventana, Controlador controlador, ControladorSonido controladorSonido) {
 		setLayout(null);
 		
@@ -44,7 +52,9 @@ public class PanelReproduccion extends JPanel{
 		btnCancionAnterior = new JButton("<");
 		btnCancionAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controladorSonido.setCancionEnReproduccion(0); // Cambia la canción
+				if(indexCancion < 0) {
+					controladorSonido.setCancionEnReproduccion(indexCancion -1); // Cambia la canción
+				}
 			}
 		});
 		btnCancionAnterior.setBounds(142, 262, 89, 23);
@@ -67,7 +77,7 @@ public class PanelReproduccion extends JPanel{
 		btnSiguenteCancion = new JButton(">");
 		btnSiguenteCancion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controladorSonido.setCancionEnReproduccion(1); // Cambia la canción
+				controladorSonido.setCancionEnReproduccion(indexCancion+1); // Cambia la canción
 			}
 		});
 		btnSiguenteCancion.setBounds(363, 262, 89, 23);
@@ -81,7 +91,11 @@ public class PanelReproduccion extends JPanel{
 		list.setBounds(36, 81, 235, 170);
 		add(list);
 		
-		lblFotoCancion = new JLabel("New label");
+		ImageIcon iconoOriginal = new ImageIcon("media/img/"+audios.get(0).getArchivo());
+		java.awt.Image imagenOriginal = iconoOriginal.getImage();
+		java.awt.Image imagenEscalada = imagenOriginal.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon icono = new ImageIcon(imagenEscalada);
+		lblFotoCancion = new JLabel(icono);
 		lblFotoCancion.setBounds(296, 82, 196, 169);
 		add(lblFotoCancion);
 	}
